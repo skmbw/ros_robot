@@ -88,8 +88,10 @@ if __name__ == "__main__":
     print('server start success.')
 
     while True:
-        client_socket, client_address = server_socket.accept()
-        print("[%s, %s]用户连接上了" % client_address)
-        handle_client_process = Process(target=handle_client, args=(client_socket,))
+        # 返回connection和address的元组
+        connection, address = server_socket.accept()
+        print("[%s, %s]用户连接上了" % address)
+        # 创建处理进程
+        handle_client_process = Process(target=handle_client, args=(connection,))
         handle_client_process.start()
-        client_socket.close()
+        connection.close()
