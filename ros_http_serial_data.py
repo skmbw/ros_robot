@@ -82,7 +82,7 @@ def get_serial():
 
 
 if __name__ == "__main__":
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # TCP套接字，socket.SOCK_DGRAM是UDP套接字
     server_socket.bind(("10.70.10.112", 8001))
     server_socket.listen(128)
     print('server start success.')
